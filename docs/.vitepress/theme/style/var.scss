@@ -20,9 +20,9 @@
 }
 
 // /* 调整主要内容区域的宽度 */
-// .VPDoc.has-aside .content-container {
-//   max-width: 95% !important;
-// }
+.VPDoc.has-aside .content-container {
+  max-width: 95% !important;
+}
 
 
 @mixin text-clip-common {
