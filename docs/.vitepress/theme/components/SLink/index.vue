@@ -27,20 +27,48 @@
         </a>
       </div>
 
-      <!-- 两行头像横向无限滚动区域（错位排列） -->
-      <div class="tags-group-all" ref="scrollContainer">
+      <!-- 两行头像横向无限滚动区域（错位排列） - 白木新增样式 -->
+      <div class="tags-group-all">
+        <!-- 星爆效果容器 - 白木新增样式 -->
+        <div class="global-stars" ref="starsContainer">
+          <svg v-for="(style, index) in starStyles" :key="index" 
+            class="star-item" 
+            :class="`gstar-${index + 1}`" 
+            :style="style" 
+            viewBox="0 0 24 24">
+            <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+          </svg>
+        </div>
         <div class="tags-group-wrapper">
           <!-- 第一行 -->
           <div class="tags-group-row" :class="{ 'offset-start': index % 2 === 0 }" v-for="(row, index) in avatarRows"
             :key="index">
             <div class="tags-group-content">
-              <a v-for="(link, linkIndex) in row" :key="linkIndex" class="tags-group-icon" target="_blank"
-                :href="link.link" :title="link.name" rel="external nofollow noopener">
+              <!-- 白木新增样式 -->
+              <a 
+                v-for="(link, linkIndex) in row" 
+                :key="linkIndex" 
+                class="tags-group-icon" 
+                target="_blank"
+                :href="link.link" 
+                :title="link.name" 
+                rel="external nofollow noopener"
+                @mouseenter="handleAvatarMouseEnter($event, link)"
+                @mouseleave="handleAvatarMouseLeave"
+              >
                 <img :src="link.avatar" :alt="link.name" loading="lazy" :class="{ irregular: link.irregular }">
+                <!-- 毛玻璃半透明背景 - 白木新增样式 -->
+                <div 
+                  v-if="activeLink && activeLink.link === link.link" 
+                  class="avatar-overlay"
+                >
+                  <span class="avatar-text">{{ activeLink.name }}</span>
+                </div>
               </a>
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!-- 友链分组列表，每个分组包含标题、描述和友链列表 -->
@@ -101,7 +129,9 @@ import { useData } from "vitepress";
 import LinkItem from "./LinkItem.vue";
 // 导入Twikoo评论组件
 import Twikoo from "../Twikoo.vue";
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
+// 引入顶部区域头像星爆效果+毛玻璃背景功能  - 白木新增样式
+import { useStarBurst } from "./DiySlinkShiroki.ts";
 
 /**
  * 单个友链的数据结构定义
@@ -149,6 +179,7 @@ const allLinks = computed(() => {
     return acc;
   }, []);
 });
+
 // 将头像平均分成两行，并复制内容以实现无缝滚动
 const avatarRows = computed(() => {
   const avatars = allLinks.value;
@@ -172,6 +203,37 @@ const handleRandomVisit = () => {
   window.open(randomLink.link, "_blank");
 };
 
+// 星爆效果相关 - 白木新增样式
+const { gStarStyle, setWrap, onAvatarEnter, onAvatarLeave } = useStarBurst();
+const starStyles = ref(gStarStyle);
+const activeLink = ref(null);
+const starsContainer = ref(null);
+
+// 处理头像鼠标进入事件 - 白木新增样式
+const handleAvatarMouseEnter = (event, link) => {
+  // 调用星爆效果函数 - 白木新增样式
+  onAvatarEnter(event);
+  
+  // 设置当前激活的链接 - 白木新增样式
+  activeLink.value = link;
+};
+
+// 处理头像鼠标离开事件 - 白木新增样式
+const handleAvatarMouseLeave = () => {
+  // 调用星爆效果函数 - 白木新增样式
+  onAvatarLeave();
+  
+  // 清除激活的链接 - 白木新增样式
+  activeLink.value = null;
+};
+
+// 组件挂载后设置星星容器 - 白木新增样式
+onMounted(() => {
+  if (starsContainer.value) {
+    setWrap(starsContainer.value);
+  }
+});
+
 // 复制功能相关
 const messageFormat = ref(null);
 const copyButtonText = ref('复制格式');
@@ -191,6 +253,8 @@ const copyMessageFormat = async () => {
 <style scoped>
 /* 字体图标 */
 @import url("https://cdn.ksah.cn/fonts/icomoon/font.css");
+/* 导入自定义样式 - 包含白木新增样式 */
+@import "./DiySlinkShiroki.scss";
 
 /* 主容器样式 */
 .my-links-container {
@@ -307,6 +371,11 @@ const copyMessageFormat = async () => {
   backface-visibility: hidden;
 }
 
+/* 原本的悬停时停止滚动动画样式，
+已移至DiySlinkShiroki.scss
+- 白木新增样式
+*/
+
 /* 内容组 */
 .tags-group-content {
   display: flex;
@@ -331,36 +400,29 @@ const copyMessageFormat = async () => {
   }
 }
 
-/* 头像样式 */
-.tags-group-icon {
-  flex: 0 0 120px;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--vp-c-bg-soft);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* 头像样式样式
+已移至DiySlinkShiroki.scss
+- 白木新增样式
+*/
 
-.tags-group-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* 头像覆盖层样式
+已移至DiySlinkShiroki.scss
+- 白木新增样式
+*/
+  
+  /* 确保内容在banner内部 - 白木新增样式后，修复一个bug */
+  .tags-group-all {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* 星星相关样式
+  已移至DiySlinkShiroki.scss
+  - 白木新增样式
+  */
 
-.tags-group-icon img.irregular {
-  border-radius: 8px;
-  object-fit: contain;
-}
-
-.tags-group-icon:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-}
 .my-links-group {
   margin-bottom: 40px;
 }
