@@ -237,11 +237,10 @@ const teekConfig = defineTeekConfig({
       return tip;
   },
 
-  // // 评论配置
-  // comment: {
-  //   provider: "twikoo",
-  //   options: CommentData,
-  // },
+  // 评论配置
+  comment: {
+    provider: "render",
+  },
 
 
   // // 公告

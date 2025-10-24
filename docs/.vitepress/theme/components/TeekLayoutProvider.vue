@@ -184,8 +184,7 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
     </template>
 
     <!-- 评论组件 -->
-    <!-- <template #doc-after> -->
-    <template #teek-doc-after-appreciation-after>
+    <template #teek-comment>
       <Twikoo />
     </template>    
 
@@ -193,7 +192,7 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
     <template #doc-footer-before>
       <DocFooterCopyright />
     </template>
-
+  
 
     <!-- <template #teek-home-banner-after>
       <InformationCard />
