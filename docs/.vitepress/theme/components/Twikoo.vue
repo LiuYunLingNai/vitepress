@@ -55,3 +55,35 @@ onMounted(() => {
   modifyCommentButton()
 })
 </script>
+
+<style>
+/* 桌面端样式 */
+.tk-right-bottom-button__button {
+  width: 45px !important;
+  height: 45px !important;
+  background-color: rgb(114, 100, 243) !important; /* 默认背景色 */
+  transition: background-color 0.3s ease !important; /* 加个过渡 */
+}
+/* 鼠标hover效果 */
+.tk-right-bottom-button__button:hover {
+  background-color: rgb(0, 102, 255) !important; /* 鼠标hover颜色 */
+}
+
+/* 图标样式 */
+.tk-right-bottom-button__button .tk-icon {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+  .tk-right-bottom-button__button {
+    width: 37px !important;
+    height: 37px !important;
+    background-color: rgb(0, 102, 255) !important; /* 默认背景色 */
+    transition: background-color 0.3s ease !important; /* 加个过渡 */
+  }
+  .tk-right-bottom-button__button:hover {
+    background-color: rgb(197, 126, 255) !important; /* 鼠标hover颜色，多余了？ */
+  }
+}
+</style>
