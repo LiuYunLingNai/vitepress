@@ -321,15 +321,15 @@ export const Nav = [
       text: '🍷关于',
       items: [
         { text: '👋关于我', link: '/about/me' },
-        {
-          text: `
-            <div style="display: flex; align-items: center; gap: 4px;">
-              <img src="/img/nav/个人主页.svg" alt="" style="width: 16px; height: 16px;">
-              <span>个人主页</span>
-            </div>
-            `,
-          link: '/about/homepage',
-        },
+        // {
+        //   text: `
+        //     <div style="display: flex; align-items: center; gap: 4px;">
+        //       <img src="/img/nav/个人主页.svg" alt="" style="width: 16px; height: 16px;">
+        //       <span>个人主页</span>
+        //     </div>
+        //     `,
+        //   link: '/about/homepage',
+        // },
         { text: '🎉关于本站', link: '/about/website' },
         {
           text: `
