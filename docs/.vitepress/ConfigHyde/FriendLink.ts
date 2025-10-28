@@ -24,53 +24,11 @@ export const FriendLink = {
       avatar: "https://testingcf.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar2.png",
     },     
     {
-      avatar: "https://img.onedayxyy.cn/images/Teek/Teekwebsite/hyde.webp",
-      name: "Hyde Blog",
-      desc: "人心中的成见是一座大山",
-      link: "https://teek.seasir.top/",
-    },
-    {
-      avatar: "https://wiki.eryajf.net/img/logo.png",
-      name: "二丫讲梵",
-      desc: "💻学习📝记录🔗分享",
-      link: "https://wiki.eryajf.net/",
-    },
-    {
-      avatar: "https://img.onedayxyy.cn/images/Teek/Teekwebsite/sugarat.top-logo.jpeg",
-      name: "粥里有勺糖",
-      desc: "你的指尖,拥有改变世界的力量",
-      link: "https://sugarat.top/",
-    },
-    {
-      avatar: "https://img.onedayxyy.cn/images/POETIZE-logo.jpg",
-      name: "POETIZE",
-      desc: "最美博客",
-      link: "https://poetize.cn/",
-    },
-    {
-      avatar: "https://img.onedayxyy.cn/images/image-20250220073534772.png",
-      name: "宇阳",
-      desc: "记录所学知识，缩短和大神的差距！",
-      link: "https://liuyuyang.net",
-    },
-    {
-      avatar: "https://img.onedayxyy.cn/images/Teek/Teekwebsite/blog.grtsinry43.com.jpeg",
-      name: "Grtsinry43’s Blog",
-      desc: "总之岁月漫长，然而值得等待 ",
-      link: "https://blog.grtsinry43.com/",
-    },  
-    {
-      avatar: "https://img.onedayxyy.cn/images/Teek/Teekwebsite/blog.zhheo.com.png",
-      name: "张洪Heo",
-      desc: "分享设计与科技生活",
-      link: "https://blog.zhheo.com/",
-    },    
-    {
-      name: "王嘉祥",
-      desc: "唱响科普和人生兴事，分享科技与美好生活（rust写的zola主题，移植于张洪heo）",
-      link: "https://blog.jiaxiang.wang/",
-      avatar: "https://img.onedayxyy.cn/images/Teek/Teekwebsite/blog.jiaxiang.wang.webp",
-    },    
+      avatar: "https://jpg.lyln114514.top/i/2025/10/28/lvs15e.png",
+      name: "QSYHH Blog",
+      desc: "其实雨很好",
+      link: "https://blog.257800180.xyz",
+    }
   ],
   // autoScroll: true,
 };
