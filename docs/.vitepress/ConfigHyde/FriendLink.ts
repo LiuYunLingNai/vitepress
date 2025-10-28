@@ -25,7 +25,7 @@ export const FriendLink = {
     },     
     {
       avatar: "https://jpg.lyln114514.top/i/2025/10/28/lvs15e.png",
-      name: "QSYHH Blog",
+      name: "黔山有好货",
       desc: "其实雨很好",
       link: "https://blog.257800180.xyz",
     }
