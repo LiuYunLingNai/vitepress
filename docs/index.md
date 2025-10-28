@@ -5,7 +5,7 @@ title: LYLN
 titleTemplate: 明心静性，爱自己
 
 tk:
-  teekHome: false
+  teekHome: true
   features: # 可选的
     - title: LYLN
       details: 柳云零奈
