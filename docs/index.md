@@ -77,9 +77,8 @@ features:
 }
 .tk-banner-feature {
   display: flex;
-  justify-content: center; //居中
+  justify-content: center;
 }
-// 头像圆角
 .tk-banner-feature__feature__item .feature-img {
   border-radius: 50%;
 }
