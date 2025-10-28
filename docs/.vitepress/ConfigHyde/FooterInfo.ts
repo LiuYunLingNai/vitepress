@@ -32,7 +32,7 @@ export const FooterInfo = {
   ],
   copyright: {
     createYear: 2021,
-    suffix: "One Blog",
+    suffix: "LYLN Blog",
   },
   icpRecord: {
     name: "陇ICP备2023002645号",
