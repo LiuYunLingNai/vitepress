@@ -12,7 +12,7 @@ export const WALLPAPER_SERVICE_CONFIG = {
 
 // 备用图片列表（当本地服务不可用时使用）
 const fallbackImages = [
-  "https://img.onedayxyy.cn/images/Teek/TeekBg/1.webp", 
+  "https://api.lyln114514.top/二次元", 
   // "https://img.onedayxyy.cn/images/Teek/TeekBg/2.webp", 
   // "https://img.onedayxyy.cn/images/Teek/TeekBg/3.webp", 
   // "https://img.onedayxyy.cn/images/Teek/TeekBg/4.webp", 
