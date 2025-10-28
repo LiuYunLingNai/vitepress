@@ -75,6 +75,14 @@ features:
     --vp-home-hero-image-filter: blur(68px);
   }
 }
+.tk-banner-feature {
+  display: flex;
+  justify-content: center; //居中
+}
+// 头像圆角
+.tk-banner-feature__feature__item .feature-img {
+  border-radius: 50%;
+}
 </style>
 
 <script setup lang="ts">
