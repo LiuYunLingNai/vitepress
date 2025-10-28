@@ -1,7 +1,7 @@
 ---
 layout: home
 
-title: One
+title: LYLN
 titleTemplate: 明心静性，爱自己
 
 tk:
