@@ -7,21 +7,11 @@ titleTemplate: 明心静性，爱自己
 tk:
   teekHome: false
   features: # 可选的
-    - title: 初见
-      details: 茫茫人海，我们相遇
+    - title: LYLN
+      details: 柳云零奈
       link: / # 可选
       # imgUrl: /img/web.png # 可选
-      image: /img/xyy-1.webp # 可选
-    - title: 幸福
-      details: 与你一起，真的幸福
-      link: /
-      # imgUrl: /img/ui.png
-      image: /img/xyy-2.webp
-    - title: 后来
-      details: 再见竟是，再也不见
-      link: /
-      # imgUrl: /img/other.png
-      image: /img/xyy-3.webp     
+      image: /img/LYLN.jpg # 可选
 
 hero:
   name: Teek
