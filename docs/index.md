@@ -2,7 +2,7 @@
 layout: home
 
 title: LYLN
-titleTemplate: 明心静性，爱自己
+titleTemplate: 柳云零奈
 
 tk:
   teekHome: true
