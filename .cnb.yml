@@ -5,7 +5,7 @@ main:
       runner:
         cpus: 64
       imports:	
-        - https://cnb.cool/lyln114514/secret/-/blob/main/envs.yml
+        - https://cnb.cool/lyln114514/secret-demo/-/blob/main/envs.yml
       docker:
         image: node:22
       stages:
