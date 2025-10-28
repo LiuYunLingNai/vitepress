@@ -24,7 +24,7 @@ export const FriendLink = {
       avatar: "https://testingcf.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar2.png",
     },     
     {
-      avatar: "https://jpg.lyln114514.top/i/2025/10/28/lvs15e.png",
+      avatar: "https://img.cdn1.vip/i/69005500052f2_1761629440.webp",
       name: "黔山有好货",
       desc: "其实雨很好",
       link: "https://blog.257800180.xyz",
