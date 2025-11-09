@@ -128,7 +128,7 @@ const fetchIPData = async (): Promise<void> => {
   try {
     const API_URL =
       //修改点1:
-      "https://api.nsmao.net/api/ip/query?key=td0O2FhnA8278CARZT8KlRHgKi";  //替换实际自己的API_KEY
+      "https://ip.lyln.site";  //替换实际自己的API_KEY
 
     const response = await fetch(API_URL);
 
