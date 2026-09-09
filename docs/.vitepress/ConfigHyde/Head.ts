@@ -106,27 +106,28 @@ export const HeadData = [
 
 
 
-  // //免费的音乐播放器
-  // [
-  //   "script",
-  //   {
-  //     type: "text/javascript",
-  //     src: "https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js",
-  //     // src: "https://myhkw.cn/player/js/jquery.min.js",
-  //   },
-  // ], 
-  // [
-  //   "script",
-  //   {
-  //     type: "text/javascript",
-  //     id: "myhk",
-  //     src: "https://myhkw.cn/api/player/1741345067120",
-  //     key: "1741345067120",
-  //     m: "1",
-  //     lr: "r",
-  //     defer: "defer",  // 添加defer属性，确保脚本在DOM加载完成后执行
-  //   },
-  // ],
+  // 全局音乐播放器（myhkw.cn）。使用 defer 保证 jQuery 在播放器前加载，
+  // 同时不阻塞 VitePress 页面渲染。
+  [
+    "script",
+    {
+      type: "text/javascript",
+      src: "https://myhkw.cn/player/js/jquery.min.js",
+      defer: "defer",
+    },
+  ],
+  [
+    "script",
+    {
+      type: "text/javascript",
+      id: "myhk",
+      src: "https://myhkw.cn/api/player/178896462611",
+      key: "178896462611",
+      m: "1",
+      lr: "r",
+      defer: "defer",
+    },
+  ],
 
   // 阿里图标库symbol 引用
   ["script",{src: "https://at.alicdn.com/t/c/font_4686603_33kna2v5qcm.js",defer: "defer",},],  
