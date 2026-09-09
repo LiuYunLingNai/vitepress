@@ -184,7 +184,8 @@ $icons-margin-top: 10px;
 
 // 圆形背景
 .is-circle-bg {
-  height: $circle-height; // 首页卡片栏博主信息高度
+  min-height: $circle-height; // 首页卡片栏博主信息最小高度
+  height: auto;
 }
 
 .tk-my__icons {
@@ -203,7 +204,8 @@ $icons-margin-top: 10px;
 }
 
 .tk-my__avatar {
-  margin-top: 220px;
+  // 不再用大段顶部外边距推开内容，避免头像、昵称和标语溢出卡片。
+  margin-top: 0;
   margin-bottom: 7px;
 }
 // .is-circle-bg {

@@ -130,119 +130,16 @@ export const Nav = [
           text: `
             <div style="display: flex; align-items: center; gap: 4px;">
               <img src="/img/nav/开源项目.svg" alt="" style="width: 16px; height: 16px;">
-              <span>开源项目</span>
+              <span>Music Together</span>
             </div>
             `,
-          link: '/zhuanti/opensource',
+          link: '/zhuanti/music-together',
         },   
       
       ],
     },  
 
 
-
-
-
-
-
-    // 生活
-    {
-      text: '🏓生活',
-      items: [
-        {
-          // 分组标题1
-          text: '娱乐',
-          items: [
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/相册.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>相册</span>
-                </div>
-                `,
-              link: '/yule/photo',
-            },
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/电影.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>电影</span>
-                </div>
-                `,
-              link: '/yule/movie',
-            },
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/音乐.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>音乐</span>
-                </div>
-                `,
-              link: '/yule/music',
-            },
-          ],
-        },
-        {
-          // 分组标题2
-          text: '小屋',
-          items: [
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/精神小屋.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>精神小屋</span>
-                </div>
-                `,
-              link: '/love/inner',
-            },
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/时间管理.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>时间管理</span>
-                </div>
-                `,
-              link: '/love/time-plan',
-            },
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/文案.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>情感文案</span>
-                </div>
-                `,
-              link: '/love/wenan',
-            },
-            // { text: "💖情侣空间", link: "https://fxj.onedayxyy.cn/" },
-          ],
-        },
-        // 兴趣
-        {
-          text: '兴趣',
-          items: [
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/旅行.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>旅行</span>
-                </div>
-                `,
-              link: '/xingqu/travel',
-            },
-            {
-              text: `
-                <div style="display: flex; align-items: center; gap: 4px;">
-                  <img src="/img/nav/读书.svg" alt="" style="width: 16px; height: 16px;">
-                  <span>读书</span>
-                </div>
-                `,
-              link: '/xingqu/reading',
-            },
-          ],
-        },  
-
-      ],
-    },  
 
 
     // // 兴趣
