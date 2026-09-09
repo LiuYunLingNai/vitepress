@@ -601,29 +601,9 @@ async function displayRandomImage() {
 // 检测图集服务是否可用（快速检测，用于初始加载）
 async function checkServiceAvailability(): Promise<boolean> {
   try {
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 2000) // 2秒快速超时，避免影响页面加载
-    
-    const response = await fetch(WALLPAPER_SERVICE_CONFIG.fullUrl, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-      },
-      signal: controller.signal
-    })
-    
-    clearTimeout(timeoutId)
-    
-    if (!response.ok) {
-      return false
-    }
-    
-    const data = await response.json()
-    if (!data.images || !Array.isArray(data.images) || data.images.length === 0) {
-      return false
-    }
-    
-    return true
+    // t.alcy.cc/mp is an image endpoint; validate it by loading the image,
+    // not by parsing the response as JSON (which made the service look down).
+    return await preloadImage(`${WALLPAPER_SERVICE_CONFIG.fullUrl}?check=${Date.now()}`)
   } catch (error) {
     return false
   }
@@ -928,18 +908,7 @@ onMounted(async () => {
     console.log('🔍 开始检测图集服务状态并更新图库...')
 
     try {
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 2000) // 2秒检测
-
-      const response = await fetch(WALLPAPER_SERVICE_CONFIG.fullUrl, {
-        method: 'GET',
-        headers: { 'Accept': 'application/json' },
-        signal: controller.signal
-      })
-
-      clearTimeout(timeoutId)
-
-      if (response.ok) {
+      if (await checkServiceAvailability()) {
         // 服务可用：获取最新图库
         console.log('✅ 图集服务可用，更新动态图库')
         await fetchImageLibrary()

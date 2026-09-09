@@ -2,9 +2,10 @@
 
 // 壁纸服务配置 - 统一配置服务地址，一处修改全局生效
 export const WALLPAPER_SERVICE_CONFIG = {
-  baseUrl: 'https://api.lyln114514.top/二次元',
-  // baseUrl: 'https://imgapi.onedayxyy.cn',
-  apiEndpoint: '/api/images',
+  // t.alcy.cc/mp returns a random image (usually via a redirect), rather
+  // than a JSON image library.
+  baseUrl: 'https://t.alcy.cc/mp',
+  apiEndpoint: '',
   get fullUrl() {
     return `${this.baseUrl}${this.apiEndpoint}`
   }
@@ -12,7 +13,7 @@ export const WALLPAPER_SERVICE_CONFIG = {
 
 // 备用图片列表（当本地服务不可用时使用）
 const fallbackImages = [
-  "https://api.lyln114514.top/二次元", 
+  "https://t.alcy.cc/mp",
   // "https://img.onedayxyy.cn/images/Teek/TeekBg/2.webp", 
   // "https://img.onedayxyy.cn/images/Teek/TeekBg/3.webp", 
   // "https://img.onedayxyy.cn/images/Teek/TeekBg/4.webp", 
@@ -35,26 +36,28 @@ const fallbackImages = [
 // 动态获取图片列表的函数
 async function fetchDynamicWallpapers(): Promise<string[]> {
   try {
-    // 使用统一配置的图片服务API
-    const response = await fetch(WALLPAPER_SERVICE_CONFIG.fullUrl, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-      },
-    });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-    
-    const data = await response.json();
-    const images = data.images || [];
+    // The endpoint returns one random image directly. Returning the URL lets
+    // the browser load it as an <img>/CSS background without requiring CORS.
+    return [`${WALLPAPER_SERVICE_CONFIG.fullUrl}?t=${Date.now()}`]
+
+    /* Keep this branch as documentation for JSON image-library replacements.
+    const response = await fetch(WALLPAPER_SERVICE_CONFIG.fullUrl)
+    if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    const data = await response.json()
+    const images = Array.isArray(data.images) ? data.images : []
     
     // 将相对路径转换为完整的服务器URL
-    const wallpapers = images.map((imagePath: string) => `${WALLPAPER_SERVICE_CONFIG.baseUrl}${imagePath}`);
+    const wallpapers = images.map((imagePath: string) => {
+      try {
+        return new URL(imagePath, WALLPAPER_SERVICE_CONFIG.baseUrl).toString()
+      } catch {
+        return ''
+      }
+    }).filter(Boolean)
     
     // 如果获取到图片，返回动态图片列表，否则返回备用图片
-    return wallpapers.length > 0 ? wallpapers : wallpapers;
+    return wallpapers.length > 0 ? wallpapers : fallbackImages;
+    */
     
   } catch (error) {
     console.warn('无法获取动态壁纸，使用备用图片:', error);

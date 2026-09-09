@@ -17,14 +17,16 @@
       </div>
 
       <!-- IP位置信息 -->
-      <div class="ip-section" v-if="ipData">
+      <div class="ip-section" v-if="ipData || locationLoading || locationError">
         <div class="ip-header">
-          <span class="ip-location"
+          <span v-if="ipData" class="ip-location"
             >欢迎来自<span class="red-text"> {{ getLocationText() }} </span
             >的朋友💖</span
           >
+          <span v-else-if="locationLoading" class="ip-location">正在获取您的位置...</span>
+          <span v-else class="ip-location">暂时无法获取您的位置</span>
         </div>
-        <div class="ip-info">
+        <div v-if="ipData" class="ip-info">
           <div class="ip-details">
             您的IP地址:
             <span class="ip-address" :title="ipData.ip">{{ ipData.ip }}</span>
@@ -112,6 +114,8 @@ interface NoticeContent {
 const ipData = ref<IPData | null>(null);
 const weatherData = ref<WeatherData | null>(null);
 const distance = ref<string>("");
+const locationLoading = ref(false);
+const locationError = ref(false);
 
 // 公告内容
 const noticeContent: NoticeContent = {
@@ -125,29 +129,50 @@ const noticeContent: NoticeContent = {
 
 // 获取IP数据
 const fetchIPData = async (): Promise<void> => {
+  locationLoading.value = true;
+  locationError.value = false;
   try {
-    const API_URL =
-      //修改点1:
-      "https://ip.lyln.site";  //替换实际自己的API_KEY
-
-    const response = await fetch(API_URL);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    let result: any = null;
+    let lastError: unknown;
+    for (const endpoint of ["https://ipwho.is/", "https://ipapi.co/json/"]) {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 8000);
+      try {
+        const response = await fetch(endpoint, { signal: controller.signal });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const candidate = await response.json();
+        if (candidate.success === false || candidate.error === true) {
+          throw new Error(candidate.message || candidate.reason || "IP数据获取失败");
+        }
+        result = candidate;
+        break;
+      } catch (error) {
+        lastError = error;
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
     }
 
-    const result = await response.json();
+    if (!result) throw lastError || new Error("IP数据获取失败");
 
-    if (result.code === 200 && result.data) {
-      ipData.value = result.data;
-      // 计算距离
-      distance.value = calculateDistance();
-    } else {
-      throw new Error(result.msg || "IP数据获取失败");
-    }
+    ipData.value = {
+      ip: result.ip || "",
+      country: result.country || result.country_name || "",
+      prov: result.region || result.region_name || result.state || "",
+      city: result.city || "",
+      district: result.district || "",
+      adcode: Number(result.postal || 0),
+      lat: Number(result.latitude ?? result.lat),
+      lng: Number(result.longitude ?? result.lon ?? result.lng),
+    };
+    distance.value = calculateDistance();
   } catch (error) {
     console.error("获取IP数据失败:", error);
     ipData.value = null;
+    distance.value = "";
+    locationError.value = true;
+  } finally {
+    locationLoading.value = false;
   }
 };
 
