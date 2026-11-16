@@ -22,7 +22,7 @@ import DocFooterCopyright from "./DocFooterCopyright.vue"; //导入文档页脚�
 
 import BackTop from "./BackTop.vue"; //导入回到顶部组件
 import Clock from "./Clock.vue"; // 时钟组件
-import OhMyLive2D from "./OhMyLive2D.vue"; //导入看板娘组件
+import GardenCompanion from "./GardenCompanion.vue"; // 小鲸鱼同伴
 
 
 // @ts-ignore
@@ -98,8 +98,8 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
     <template #layout-top>
       <!-- 全局问候组件 -->
       <!-- <GlobalGreet /> -->
-      <!-- 看板娘组件 -->
-      <OhMyLive2D />
+      <!-- 小鲸鱼同伴 -->
+      <GardenCompanion />
       <!-- 顶部滚动条组件 -->
       <ScrollProgressBar />
       <!--网页标题切换组件  -->

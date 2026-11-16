@@ -14,9 +14,6 @@ importers:
       lunisolar:
         specifier: ^2.6.0
         version: 2.6.0
-      oh-my-live2d:
-        specifier: ^0.19.3
-        version: 0.19.3
       twikoo:
         specifier: ^1.6.44
         version: 1.7.22
@@ -894,9 +891,6 @@ packages:
 
   nprogress-v2@1.1.10:
     resolution: {integrity: sha512-MypWLNIPIM07SS0bAc/oac0vhVFz9vAHm7d1sj//Pnf3J03LQ3CuWrlDteIu6exq0fIvkDJ6tUDRWLaifsIt5w==}
-
-  oh-my-live2d@0.19.3:
-    resolution: {integrity: sha512-EWva8OUmcExIFIhqGkeiVPQt44RvYYFg+nmpkrZgQVQ+xofVFq4SDYAg5NcdK40HxyV4vORBJEg4OHIHP96MrA==}
 
   oniguruma-to-es@2.3.0:
     resolution: {integrity: sha512-bwALDxriqfKGfUufKGGepCzu9x7nJQuoRoAFp4AnwehhC2crqrDIAP/uN2qdlsAvSMpeRC3+Yzhqc7hLmle5+g==}
@@ -1899,8 +1893,6 @@ snapshots:
     optional: true
 
   nprogress-v2@1.1.10: {}
-
-  oh-my-live2d@0.19.3: {}
 
   oniguruma-to-es@2.3.0:
     dependencies:
