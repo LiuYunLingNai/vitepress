@@ -32,6 +32,14 @@
   background-repeat: no-repeat !important;
 }
 
+/* 随机背景图的可读性遮罩 */
+.tk-my__avatar__circle--bg.is-mask::after {
+  /* §7.2.2：下半部加深遮罩，保证随机图片上的白色文字和图标清晰。 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6) 50%);
+  opacity: 1;
+  pointer-events: none;
+}
+
 /* 确保头像在背景图之上 */
 .tk-my__avatar {
   position: relative !important;

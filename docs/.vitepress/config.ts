@@ -68,8 +68,8 @@ const teekConfig = defineTeekConfig({
     shape: "circle-rotate", // 头像风格：square 为方形头像，circle 为圆形头像，circle-rotate 可支持鼠标悬停旋转
     name: "LYLN", // 侧边栏个人昵称
     slogan: "明心静性，爱自己", // 侧边栏个人座右铭
-    circleBgImg: "https://img.onedayxyy.cn/images/Teek/TeekBg/14.webp", // 侧边栏个人头像圆形背景图
-    circleBgMask: false, // 头像圆形背景图是否显示遮罩层
+    circleBgImg: "https://t.alcy.cc/mp", // 侧边栏个人资料卡随机背景图
+    circleBgMask: true, // 开启遮罩，保证随机背景上的文字清晰
     color: "#fff",
 
     // 状态，仅当 shape 为 circle 相关值时有效
